@@ -1,0 +1,48 @@
+:root {
+  --mattercall-brand: #3b82f6;
+  --mattercall-brand-dark: #1d4ed8;
+  --mattercall-bg: #f8fafc;
+  --mattercall-text: #0f172a;
+}
+
+.login-pf body {
+  background: var(--mattercall-bg);
+}
+
+.mattercall-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.mattercall-logo {
+  width: 40px;
+  height: 40px;
+}
+
+.mattercall-title {
+  font-weight: 600;
+  color: var(--mattercall-text);
+  letter-spacing: 0.02em;
+}
+
+.mattercall-subtitle {
+  margin-top: 0.25rem;
+  color: #475569;
+  font-size: 0.95rem;
+}
+
+.mattercall-highlight {
+  color: var(--mattercall-brand);
+}
+
+.mattercall-primary-button.pf-v5-c-button.pf-m-primary {
+  background: var(--mattercall-brand);
+  border-color: var(--mattercall-brand);
+}
+
+.mattercall-primary-button.pf-v5-c-button.pf-m-primary:hover {
+  background: var(--mattercall-brand-dark);
+  border-color: var(--mattercall-brand-dark);
+}
