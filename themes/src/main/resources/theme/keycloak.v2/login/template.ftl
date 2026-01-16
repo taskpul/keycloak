@@ -144,7 +144,9 @@
     </header>
     <main class="${properties.kcLoginMain!}">
       <div class="${properties.kcLoginMainHeader!}">
-        <h1 class="${properties.kcLoginMainTitle!}" id="kc-page-title"><#nested "header"></h1>
+        <div class="kc-card-header" id="kc-page-title">
+          <#nested "header">
+        </div>
         <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
         <div class="${properties.kcLoginMainHeaderUtilities!}">
           <div class="${properties.kcInputClass!}">
@@ -255,7 +257,8 @@
           </div>
       </div>
 
-        <div class="${properties.kcLoginMainFooter!}">
+        <div class="${properties.kcLoginMainFooter!} kc-card-footer">
+            <#nested "footer">
             <@loginFooter.content/>
         </div>
     </main>

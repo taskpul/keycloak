@@ -3,7 +3,17 @@
 <#import "buttons.ftl" as buttons>
 <@layout.registrationLayout displayInfo=true displayMessage=!messagesPerField.existsError('username'); section>
     <#if section = "header">
-        ${msg("emailForgotTitle")}
+        <div class="kc-brand-row">
+            <span class="kc-brand-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                    <path fill="#95BF47" d="M20.6 6.4c-.1-.1-2.3-.1-2.3-.1s-1.7-1.6-1.9-1.8c-.2-.2-.5-.2-.7-.1l-1.4.4c-.1-.4-.3-.9-.6-1.3-.9-1.4-2.3-2-3.7-1.6-1.7.5-2.6 2.7-2.8 4.1l-2 .6c-.6.2-.6.2-.7.8-.1.4-1.5 11.9-1.5 11.9L17.8 21l3.3-.8S20.7 6.5 20.6 6.4zM13 5l-2.2.7c.2-.7.5-1.4 1-1.7.4-.3.8-.4 1.1-.3.2.4.3.8.3 1.3zm-3.6 1.1L7.9 6.6c.2-1.1.7-2.2 1.4-2.5.3-.1.6-.1.8 0-.5.6-.7 1.5-.7 2zm7.5.5l-3 .9V5.7c0-.5-.1-1-.2-1.4.8.1 1.3.7 1.7 1.3.2.3.3.6.4.8z"/>
+                    <path fill="#5E8E3E" d="M20.6 6.4c-.1-.1-2.3-.1-2.3-.1s-1.7-1.6-1.9-1.8c-.1-.1-.2-.1-.3-.1v16.6l4.9-1.1s-.4-13.4-.4-13.5z"/>
+                </svg>
+            </span>
+            <span class="kc-brand-name">shopify</span>
+        </div>
+        <h1 class="kc-title">Reset password</h1>
+        <p class="kc-subtitle">Enter your email to receive a reset link</p>
     <#elseif section = "form">
         <form id="kc-reset-password-form" class="${properties.kcFormClass!}" action="${url.loginAction}" method="post">
             <#assign label>
@@ -11,10 +21,11 @@
             </#assign>
             <@field.input name="username" label=label value=auth.attemptedUsername!'' autofocus=true />
 
-            <@buttons.actionGroup>
-              <@buttons.button id="kc-form-buttons" label="doSubmit" class=["kcButtonPrimaryClass", "kcButtonBlockClass"]/>
-              <@buttons.buttonLink href=url.loginUrl label="backToLogin" class=["kcButtonSecondaryClass", "kcButtonBlockClass"]/>
-            </@buttons.actionGroup>
+            <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
+                <button class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} kc-primary-button" type="submit">
+                    Send reset link
+                </button>
+            </div>
 
         </form>
     <#elseif section = "info" >
@@ -25,5 +36,16 @@
                 ${msg("emailInstruction")}
             </#if>
         </span>
+    <#elseif section = "footer">
+        <div class="kc-footer-links">
+            <div class="kc-footer-line">
+                <span><a href="${url.loginUrl}">Back to Log in →</a></span>
+            </div>
+            <div class="kc-footer-secondary">
+                <a href="#">Help</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+            </div>
+        </div>
     </#if>
 </@layout.registrationLayout>
