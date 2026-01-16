@@ -1,16 +1,46 @@
 :root {
-  --mattercall-brand: #111827;
-  --mattercall-brand-dark: #0b0f19;
-  --mattercall-bg: #ffffff;
-  --mattercall-text: #0f172a;
-  --mattercall-muted: #64748b;
-  --mattercall-border: #e2e8f0;
-  --mattercall-shadow: 0 24px 48px rgba(15, 23, 42, 0.08);
+  --mc-bg0: #050607;
+  --mc-bg1: #0b0f14;
+  --mc-card: #ffffff;
+  --mc-text: #111827;
+  --mc-muted: #6b7280;
+  --mc-border: #e5e7eb;
+  --mc-btn: #2b2f36;
+  --mc-btn-hover: #1f2329;
+  --mc-radius: 18px;
+  --mc-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  --mc-font: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    "Apple Color Emoji", "Segoe UI Emoji";
 }
 
 .login-pf body {
-  background: var(--mattercall-bg);
-  color: var(--mattercall-text);
+  font-family: var(--mc-font);
+  margin: 0;
+  color: var(--mc-text);
+  background:
+    radial-gradient(1200px 800px at 20% 10%, rgba(255, 255, 255, 0.06), transparent 60%),
+    radial-gradient(1000px 700px at 80% 90%, rgba(255, 255, 255, 0.05), transparent 60%),
+    linear-gradient(180deg, var(--mc-bg0), var(--mc-bg1));
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.login-pf body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../img/auth-bg.jpg") center/cover no-repeat;
+  filter: blur(10px) saturate(0.9);
+  opacity: 0.22;
+  transform: scale(1.06);
+}
+
+.login-pf body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 40%, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.7));
 }
 
 #kc-header {
@@ -18,15 +48,18 @@
 }
 
 .pf-v5-c-login__container {
-  grid-template-columns: minmax(0, 420px);
-  padding: 4.5rem 1rem 5rem;
+  grid-template-columns: minmax(0, 520px);
+  padding: 40px 16px;
 }
 
 .card-pf {
-  border-radius: 16px;
-  border: 1px solid var(--mattercall-border);
-  box-shadow: var(--mattercall-shadow);
-  padding: 2.25rem 2.5rem;
+  position: relative;
+  z-index: 1;
+  border-radius: var(--mc-radius);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--mc-shadow);
+  padding: 34px;
+  background: var(--mc-card);
 }
 
 .pf-v5-c-login__main-header {
@@ -39,39 +72,40 @@
 }
 
 .mattercall-card-header {
-  margin-bottom: 1.75rem;
+  margin-bottom: 18px;
 }
 
 .mattercall-card-title {
-  font-size: 1.35rem;
-  font-weight: 600;
-  color: var(--mattercall-text);
+  font-size: 30px;
+  line-height: 1.15;
+  font-weight: 750;
+  margin: 6px 0;
+  color: var(--mc-text);
 }
 
 .mattercall-card-subtitle {
-  margin-top: 0.35rem;
-  font-size: 0.92rem;
-  color: var(--mattercall-muted);
+  margin: 0 0 18px;
+  font-size: 14px;
+  color: var(--mc-muted);
 }
 
 .pf-v5-c-form__label-text {
-  font-weight: 600;
-  font-size: 0.85rem;
-  color: var(--mattercall-text);
+  font-size: 13px;
+  color: var(--mc-muted);
 }
 
 .pf-v5-c-form-control {
   border-radius: 10px;
-  border: 1px solid var(--mattercall-border);
-  padding: 0.65rem 0.9rem;
-  font-size: 0.95rem;
-  color: var(--mattercall-text);
+  border: 1px solid var(--mc-border);
+  padding: 12px;
+  font-size: 15px;
+  color: var(--mc-text);
   background-color: #fff;
 }
 
 .pf-v5-c-form-control:focus {
-  border-color: #cbd5f5;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  border-color: rgba(109, 94, 246, 0.55);
+  box-shadow: 0 0 0 4px rgba(109, 94, 246, 0.14);
 }
 
 .mattercall-password-group .pf-v5-c-form__helper-text {
@@ -80,7 +114,7 @@
 }
 
 .mattercall-password-group .pf-v5-c-helper-text__item-text a {
-  color: var(--mattercall-text);
+  color: var(--mc-text);
   font-weight: 500;
   text-decoration: none;
 }
@@ -90,27 +124,28 @@
 }
 
 .mattercall-primary-button.pf-v5-c-button.pf-m-primary {
-  background: linear-gradient(90deg, #0f0f10, #1f2937);
-  border: none;
-  border-radius: 12px;
-  padding: 0.8rem 1rem;
-  font-weight: 600;
+  margin-top: 14px;
+  background: linear-gradient(180deg, var(--mc-btn), #23272e);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-weight: 650;
   font-size: 0.95rem;
 }
 
 .mattercall-primary-button.pf-v5-c-button.pf-m-primary:hover {
-  background: linear-gradient(90deg, #0b0f19, #111827);
+  background: linear-gradient(180deg, var(--mc-btn-hover), #1a1d22);
 }
 
 .mattercall-form-footer {
   text-align: center;
-  font-size: 0.92rem;
-  color: var(--mattercall-muted);
-  margin-top: 1.25rem;
+  font-size: 12px;
+  color: var(--mc-muted);
+  margin-top: 18px;
 }
 
 .mattercall-form-footer a {
-  color: var(--mattercall-text);
+  color: var(--mc-text);
   font-weight: 600;
   text-decoration: none;
 }
@@ -120,14 +155,14 @@
 }
 
 .mattercall-legal {
-  margin-top: 1.5rem;
+  margin-top: 18px;
   text-align: center;
-  font-size: 0.75rem;
-  color: var(--mattercall-muted);
+  font-size: 12px;
+  color: var(--mc-muted);
 }
 
 .mattercall-legal a {
-  color: var(--mattercall-muted);
+  color: var(--mc-muted);
   text-decoration: underline;
 }
 
@@ -140,4 +175,9 @@
 .mattercall-logo,
 .mattercall-highlight {
   display: none;
+}
+
+.pf-v5-c-login__main {
+  position: relative;
+  z-index: 1;
 }
