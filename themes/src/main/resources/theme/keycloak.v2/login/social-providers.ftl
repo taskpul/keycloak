@@ -1,15 +1,10 @@
 <#macro show social>
-  <div class="${properties.kcLoginMainFooterBand!}">
-      <span class="${properties.kcLoginMainFooterBandItem!} ${properties.kcLoginMainFooterHelperText!}">
-          ${msg("identity-provider-login-label")}
-      </span>
-  </div>
-  <div id="kc-social-providers" class="${properties.kcFormSocialAccountSectionClass!}">
-      <ul class="${properties.kcFormSocialAccountListClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountListGridClass!}</#if>">
+  <div id="kc-social-providers" class="kc-social-providers">
+      <ul class="kc-social-list">
           <#list social.providers as p>
-              <li class="<#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}<#else>${properties.kcFormSocialAccountListItemClass!}</#if>">
+              <li class="kc-social-item">
                   <a data-once-link data-disabled-class="${properties.kcFormSocialAccountListButtonDisabledClass!}" id="social-${p.alias}"
-                          class="${properties.kcFormSocialAccountListButtonClass!}" aria-label="${p.displayName}"
+                          class="kc-social-button" aria-label="${p.displayName}"
                           type="button" href="${p.loginUrl}">
                         <#if p.iconClasses?has_content>
                             <span class="${p.iconClasses!}">${p.displayName!}</span>
