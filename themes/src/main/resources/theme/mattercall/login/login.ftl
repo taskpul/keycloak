@@ -9,12 +9,9 @@
     <#if section = "header">
         ${msg("loginAccountTitle")}
     <#elseif section = "form">
-        <div class="mattercall-header">
-            <img class="mattercall-logo" src="${url.resourcesPath}/img/logo.svg" alt="${properties.mattercallLogoAlt!"Mattercall"}" />
-            <div>
-                <div class="mattercall-title">Mattercall</div>
-                <div class="mattercall-subtitle">${msg("loginTitleHtml", (realm.displayNameHtml!""))?no_esc}</div>
-            </div>
+        <div class="mattercall-card-header">
+            <div class="mattercall-card-title">${msg("doLogIn")}</div>
+            <div class="mattercall-card-subtitle">Enter your email below to login to your account</div>
         </div>
 
         <div id="kc-form">
@@ -27,17 +24,21 @@
                         </#assign>
                         <@field.input name="username" label=label error=messagesPerField.getFirstError('username','password')
                             autofocus=true autocomplete="${(enableWebAuthnConditionalUI?has_content)?then('username webauthn', 'username')}" value=login.username!'' />
-                        <@field.password name="password" label=msg("password") error="" forgotPassword=realm.resetPasswordAllowed autofocus=usernameHidden?? autocomplete="current-password">
+                        <div class="mattercall-password-group">
+                            <@field.password name="password" label=msg("password") error="" forgotPassword=realm.resetPasswordAllowed autofocus=usernameHidden?? autocomplete="current-password">
                             <#if realm.rememberMe && !usernameHidden??>
                                 <@field.checkbox name="rememberMe" label=msg("rememberMe") value=login.rememberMe?? />
                             </#if>
-                        </@field.password>
+                            </@field.password>
+                        </div>
                     <#else>
-                        <@field.password name="password" label=msg("password") forgotPassword=realm.resetPasswordAllowed autofocus=usernameHidden?? autocomplete="current-password">
+                        <div class="mattercall-password-group">
+                            <@field.password name="password" label=msg("password") forgotPassword=realm.resetPasswordAllowed autofocus=usernameHidden?? autocomplete="current-password">
                             <#if realm.rememberMe && !usernameHidden??>
                                 <@field.checkbox name="rememberMe" label=msg("rememberMe") value=login.rememberMe?? />
                             </#if>
-                        </@field.password>
+                            </@field.password>
+                        </div>
                     </#if>
 
                     <input type="hidden" id="id-hidden-input" name="credentialId" <#if auth.selectedCredential?has_content>value="${auth.selectedCredential}"</#if>/>
@@ -56,8 +57,11 @@
     <#elseif section = "info" >
         <#if realm.password && realm.registrationAllowed && !registrationDisabled??>
             <div id="kc-registration-container">
-                <div id="kc-registration">
+                <div id="kc-registration" class="mattercall-form-footer">
                     <span>${msg("noAccount")} <a href="${url.registrationUrl}">${msg("doRegister")}</a></span>
+                </div>
+                <div class="mattercall-legal">
+                    By clicking continue, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
                 </div>
             </div>
         </#if>

@@ -13,12 +13,9 @@
             ${msg("registerTitle")}
         </#if>
     <#elseif section = "form">
-        <div class="mattercall-header">
-            <img class="mattercall-logo" src="${url.resourcesPath}/img/logo.svg" alt="${properties.mattercallLogoAlt!"Mattercall"}" />
-            <div>
-                <div class="mattercall-title">Mattercall</div>
-                <div class="mattercall-subtitle">${msg("registerTitle")}</div>
-            </div>
+        <div class="mattercall-card-header">
+            <div class="mattercall-card-title">Sign Up</div>
+            <div class="mattercall-card-subtitle">Create your account to get started</div>
         </div>
 
         <form id="kc-register-form" class="${properties.kcFormClass!}" action="${url.registrationAction}" method="post" novalidate="novalidate">
@@ -60,12 +57,8 @@
                 </div>
             </#if>
 
-            <div class="${properties.kcFormGroupClass!} pf-v5-c-login__main-footer-band">
-                <div id="kc-form-options" class="${properties.kcFormOptionsClass!} pf-v5-c-login__main-footer-band-item">
-                    <div class="${properties.kcFormOptionsWrapperClass!}">
-                        <span><a href="${url.loginUrl}">${msg("backToLogin")}</a></span>
-                    </div>
-                </div>
+            <div class="mattercall-form-footer">
+                <span>Already have an account? <a href="${url.loginUrl}">${msg("doLogIn")}</a></span>
             </div>
 
         </form>
